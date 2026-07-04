@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<div class="container">
+    <h2>Todos los destinos</h2>
+    <div class="card-grid">
+        {% for destination in destinations %}
+        <article class="card">
+            <h3>{{ destination.title }}</h3>
+            <p>{{ destination.summary }}</p>
+            <p><strong>Ubicación:</strong> {{ destination.location }}</p>
+            <a class="button" href="{% url 'destination_detail' slug=destination.slug %}">Leer más</a>
+        </article>
+        {% empty %}
+        <p>Aún no hay destinos publicados.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
